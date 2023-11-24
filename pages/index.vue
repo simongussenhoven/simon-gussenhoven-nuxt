@@ -1,6 +1,43 @@
 <template>
-    <div class="index">
-        <h1>NUXT</h1>
-        <h2>Server side rendered</h2>
+    <div class="home flex flex-col justify-center items-center h-full">
+        <h1 class="text-7xl">Simon Gussenhoven</h1>
+        <h2 class="text-6xl">Frontend developer</h2>
+        <div class="cards">
+            <Card v-for="(card, index) in cards" :cardContent="card" :key="index" />
+        </div>
     </div>
 </template>
+<script lang="ts" setup>
+import Card from '@/components/Card.vue'
+
+const cards = [
+    {
+        title: 'Typescript',
+        subTitle: 'Creating robust apps in Typescript',
+        image: 'ts'
+    },
+    {
+        title: 'Vue.js',
+        subTitle: 'Specialized in Vue.js',
+        image: 'vue'
+    },
+    {
+        title: 'Nuxt.js',
+        subTitle: 'Server side rendering with Nuxt',
+        image: 'nuxt'
+    },
+    {
+        title: 'Scrum',
+        subTitle: 'Comfortable working Agile with Scrum',
+        image: 'scrum'
+    }
+] as CardContent[]
+</script>
+<style scoped lang="scss">
+.cards {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 3rem;
+}
+</style>
