@@ -1,17 +1,28 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background: black;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    color: white;
-    align-items: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  background: black;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-h1, h2, h3 {
-    text-align: center;
+.app {
+  height: 100vh;
+  width: 100vw;
+  border: 1px soldi red;
+  display: flex;
+  flex-direction: column;
+}
+.pages {
+  flex-grow: 1;
+}
+h1,
+h2,
+h3 {
+  text-align: center;
 }
