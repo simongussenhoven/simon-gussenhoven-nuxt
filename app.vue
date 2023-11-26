@@ -1,11 +1,9 @@
 <template>
     <div class="app">
         <nav-bar />
-        <div class="pages container mx-auto">
-            <NuxtLayout>
-                <NuxtPage />
-            </NuxtLayout>
-        </div>
+        <NuxtLayout>
+            <NuxtPage />
+        </NuxtLayout>
     </div>
 </template>
 <script lang="ts" setup>

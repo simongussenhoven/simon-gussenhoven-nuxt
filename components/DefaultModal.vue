@@ -52,12 +52,9 @@ const props = withDefaults(defineProps<{
 }>(), {
     modalVisible: false
 })
-import { useRouter } from 'nuxt/app';
 const emit = defineEmits(['update:modalVisible'])
 const onCloseDialog = () => {
     emit('update:modalVisible', false)
 }
-
-const router = useRouter()
 
 </script>
