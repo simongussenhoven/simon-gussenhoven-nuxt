@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { paramsToQueryParams } from './utils'
+import { paramsToQueryParamString } from '@/utils/api-helpers'
 export const useNewsStore = defineStore('news', {
     state: () => ({
         newsItems: [] as NewsItem[],
@@ -14,7 +14,7 @@ export const useNewsStore = defineStore('news', {
                 query: this.searchTerm,
                 maxnumberofitems: this.numberOfItems
             }
-            const response = await fetch(baseUrl + paramsToQueryParams(params))
+            const response = await fetch(baseUrl + paramsToQueryParamString(params))
                 .then(response => response.json()
                 )
             this.newsItems = [...this.newsItems, ...response.nieuwsberichten]

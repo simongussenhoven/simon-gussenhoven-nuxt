@@ -1,12 +1,10 @@
 const baseUrl = 'https://api.politie.nl/v4/nieuws'
 import axios from 'axios'
-import { paramsToQueryParams } from '~/stores/utils'
+import { paramsToQueryParamString } from '@/utils/api-helpers'
 
 export const handler = async (event: any) => {
-    console.log('Query paraneters')
-    console.log(baseUrl + paramsToQueryParams(event.queryStringParameters))
     try {
-        const { data } = await axios.get(baseUrl + paramsToQueryParams(event.queryStringParameters))
+        const { data } = await axios.get(baseUrl + paramsToQueryParamString(event.queryStringParameters))
         return { statusCode: 200, body: JSON.stringify(data) }
     }
     catch (error: any) {

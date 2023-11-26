@@ -1,8 +1,8 @@
 <template>
-    <div class="home flex flex-col justify-center items-center h-full">
+    <div class="home container flex flex-col justify-center items-center h-full">
         <h1 class="text-7xl">Simon Gussenhoven</h1>
         <h2 class="text-6xl">Frontend developer</h2>
-        <div class="cards d-flex flex-wrap justify-center">
+        <div class="cards d-flex flex-wrap justify-center max-w-5xl">
             <Card v-for="(card, index) in cards" :cardContent="card" :key="index" />
         </div>
     </div>
@@ -40,7 +40,8 @@ const cards = [
         title: 'Tailwind/Bootstrap',
         subTitle: 'Css library enjoyer',
         image: tw
-    }
+    },
+
 ] as CardContent[]
 </script>
 <style scoped lang="scss">
