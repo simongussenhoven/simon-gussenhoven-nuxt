@@ -10,7 +10,6 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint --ext .ts,.js,.vue ."
   },
-  
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
@@ -22,6 +21,7 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "@nuxt/ui": "^2.10.0"
+    "@nuxt/ui": "^2.10.0",
+    "flowbite": "^2.2.0"
   }
 }
