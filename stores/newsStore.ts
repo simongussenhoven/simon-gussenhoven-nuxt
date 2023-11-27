@@ -4,7 +4,7 @@ export const useNewsStore = defineStore('news', {
     state: () => ({
         newsItems: [] as NewsItem[],
         numberOfItems: 25 as number,
-        searchTerm: 'Groningen' as string,
+        searchTerm: '' as string,
         isLast: false as boolean
     }),
     actions: {

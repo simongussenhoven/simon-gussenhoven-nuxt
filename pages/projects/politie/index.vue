@@ -1,8 +1,9 @@
 <template>
+    <filter-bar />
     <div class="page flex justify-center">
         <div class="container flex flex-col items-center">
-            <h1 class="text-5xl font-extrabold dark:text-white py-5 text-left">Nieuwsberichten</h1>
-            <div class="news-cards flex flex-row flex-wrap w-full my-4 gap-3 px-10">
+            <!-- <h1 class="text-5xl font-extrabold dark:text-white py-5 text-left">Nieuwsberichten</h1> -->
+            <div class="news-cards flex flex-row justify-center flex-wrap w-full my-4 gap-3 max-w-8xl pt-5">
                 <news-card v-for="item in highlightedNewsItems" :item="item" :key="item.uid" />
             </div>
             <div class="news-cards-compact pt-5 container max-w-7xl">
@@ -39,4 +40,4 @@ const onIntersect = () => {
     });
 }
 </script>
-<style scoped></style>
+
