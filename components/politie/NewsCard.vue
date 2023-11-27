@@ -14,7 +14,6 @@
                 <icon-button class="w-24 mb-0 mt-auto">Lees</icon-button>
             </NuxtLink>
         </div>
-
     </a>
 </template>
 <script lang="ts" setup>
