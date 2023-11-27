@@ -5,7 +5,6 @@
             <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                 {{ item.titel }}
             </h5>
-
             <p class="font-normal text-gray-700 dark:text-gray-200 mb-2">
                 <span>{{ item.gebied }} | {{ getDateTime(item.publicatiedatum) }}</span>
                 <img :src="getImage(item.afbeelding.url)" class="float-right pl-10" />
