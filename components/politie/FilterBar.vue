@@ -11,7 +11,7 @@
                 <a href="#"
                     class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
                     aria-current="page">Gezochte personen</a>
-                <search-bar v-model="searchString" />
+                <search-bar v-model="searchTerm" />
             </div>
         </div>
     </nav>
@@ -19,11 +19,20 @@
 <script lang="ts" setup>
 import { onMounted } from 'vue'
 import { initFlowbite } from 'flowbite'
+import _ from 'lodash'
+import { useNewsStore } from '@/stores/newsStore'
 
-const searchString = ref('')
+const newsStore = useNewsStore();
 
-// initialize components based on data attribute selectors
-onMounted(() => {
-    initFlowbite();
+// debounce the searchString
+const searchTerm = ref('')
+const debounce = _.debounce(() => {
+    newsStore.setSearchTerm(searchTerm.value);
+    newsStore.clearNewsItems();
+    newsStore.getMoreNews();
+}, 2000)
+watch(searchTerm, () => {
+    debounce.cancel();
+    debounce();
 })
 </script>

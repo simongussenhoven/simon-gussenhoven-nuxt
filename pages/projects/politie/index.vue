@@ -27,7 +27,7 @@ const highlightedNewsItems = computed(() => newsStore.newsItems.slice(0, 6))
 const otherNews = computed(() => newsStore.newsItems.slice(6, newsStore.newsItems.length))
 const getLastMessage = () => {
     if (newsStore.newsItems.length === 0 && newsStore.isLast) return "Geen items gevonden"
-    if (newsStore.isLast) return "Niet meer items gevonden"
+    if (newsStore.isLast) return "Einde van de lijst"
 }
 
 const modalVisible = ref(true)

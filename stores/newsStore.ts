@@ -24,6 +24,12 @@ export const useNewsStore = defineStore('news', {
                 return
             }
             this.newsItems = [...this.newsItems, ...response.nieuwsberichten]
+        },
+        setSearchTerm(string: string) {
+            this.searchTerm = string
+        },
+        clearNewsItems() {
+            this.newsItems = [];
         }
     }
 })
