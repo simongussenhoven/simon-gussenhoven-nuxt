@@ -1,8 +1,10 @@
 <template>
-    <div class="home container flex flex-col justify-center items-center h-full">
-        <h1 class="text-7xl">Simon Gussenhoven</h1>
-        <h2 class="text-6xl">Frontend developer</h2>
-        <div class="cards d-flex flex-wrap justify-center max-w-5xl">
+    <div class="home flex flex-col justify-center items-center flex-grow gap-10">
+        <div class="flex flex-col gap-5">
+            <h1 class="text-7xl">Simon Gussenhoven</h1>
+            <h2 class="text-6xl">Frontend developer</h2>
+        </div>
+        <div class="cards flex flex-row flex-wrap justify-center max-w-5xl gap-5">
             <Card v-for="(card, index) in cards" :cardContent="card" :key="index" />
         </div>
     </div>
@@ -44,11 +46,3 @@ const cards = [
 
 ] as CardContent[]
 </script>
-<style scoped lang="scss">
-.cards {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    margin-top: 3rem;
-}
-</style>
