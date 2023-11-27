@@ -7,10 +7,15 @@
                 <h2 class="text-left py-4 text-2xl"><span>{{ item?.gebied }}</span> | {{ getDateTime(item?.publicatiedatum
                     ??
                     'onbekend') }}</h2>
-                <div class="content">
+                <div class="content pb-5 ">
                     <p v-for="alinea in item?.alineas" v-html="alinea.opgemaaktetekst" class="par text-xl text-left" />
                 </div>
+                <hr class="" />
             </div>
+            <!-- <h2 class="text-left pt-4 text-2xl">Meer items</h2>
+            <div class="news-cards flex flex-row justify-center flex-wrap w-full my-4 gap-3 max-w-8xl pt-5">
+                <news-card v-for="item in moreItems" :item="item" :key="item.uid" />
+            </div> -->
         </div>
     </div>
 </template>
@@ -18,11 +23,17 @@
 import { useRoute } from 'vue-router';
 import { useNewsStore } from '../../../../stores/newsStore';
 import FilterBar from '@/components/politie/FilterBar.vue'
+import NewsCard from '@/components/politie/NewsCard.vue';
 
 const route = useRoute()
 const newsStore = useNewsStore();
 const item = newsStore.newsItems.find((item) => {
     return item.uid === route.params.id
+})
+const moreItems = computed(() => {
+    return newsStore.newsItems.filter((item) => {
+        return item.uid !== route.params.id
+    }).slice(0, 6)
 })
 
 </script>
