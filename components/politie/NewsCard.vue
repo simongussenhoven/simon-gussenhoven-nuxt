@@ -10,7 +10,9 @@
                 <img :src="getImage(item.afbeelding.url)" class="float-right pl-10" />
                 {{ getMaxChars(item.introductie) }}
             </p>
-            <icon-button class="w-24 mb-0 mt-auto">Lees</icon-button>
+            <NuxtLink :to="`politie/posts/${item.uid}`">
+                <icon-button class="w-24 mb-0 mt-auto">Lees</icon-button>
+            </NuxtLink>
         </div>
 
     </a>
