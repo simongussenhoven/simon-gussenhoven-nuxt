@@ -1,7 +1,7 @@
 <template>
-    <div class="page flex justify-center">
+    <div class="page flex justify-center items-center min-h-full">
         <div class="container max-w-4xl">
-            <h2 class="text-6xl py-5 text-left">About this page</h2>
+            <h2 class="text-6xl pb-5 text-left">About this page</h2>
             <div class="content">
                 <p>This page was created to practice my skills while developing websites. Therefore, it will most likely
                     change often. Since there might be external API's called for fetching data, I can't take responsibilty
@@ -34,6 +34,11 @@
                     <li><a target="_blank" class="text-blue-600 dark:text-blue-500 hover:underline"
                             href="https://www.netlify.com/">Netlify</a> for deploying the app</li>
                 </ul>
+                <hr />
+                <h3 class="text-left py-4 text-5xl">Contact</h3>
+                <p>Do you like this page and want me to build something for you? Contact me on <a target="_blank"
+                        class="text-blue-600 dark:text-blue-500 hover:underline"
+                        href="https://www.linkedin.com/in/simon-gussenhoven/">LinkedIn</a>.</p>
             </div>
         </div>
     </div>
