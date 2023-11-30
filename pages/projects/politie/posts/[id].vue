@@ -2,20 +2,19 @@
     <filter-bar />
     <div class="page flex justify-center">
         <div class="container">
-            <div class="card pt-16 text-left">
-                <h1 class="text-4xl font-extrabold text-left">{{ item?.titel }}</h1>
-                <h2 class="text-left py-4 text-2xl"><span>{{ item?.gebied }}</span> | {{ getDateTime(item?.publicatiedatum
-                    ??
-                    'onbekend') }}</h2>
-                <div class="content pb-5 ">
-                    <p v-for="alinea in item?.alineas" v-html="alinea.opgemaaktetekst" class="par text-xl text-left" />
+            <div v-if="item">
+                <news-full-article :item="item" />
+                <div class="more-from-region">
+                    <h1 class="text-4xl text-left mt-4">Meer uit de regio {{ item.gebied }}</h1>
+                    <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+                        <div
+                            v-for="localItem in newsStore.newsItemsLocal.filter((local: NewsItem) => local.uid !== item?.uid)">
+                            <news-card :item="localItem" :relative-link="localItem.uid" />
+                        </div>
+                        <intersection-observer @intersected="onIntersect" :isLoading="isLoading" />
+                    </div>
                 </div>
-                <hr class="" />
             </div>
-            <!-- <h2 class="text-left pt-4 text-2xl">Meer items</h2>
-            <div class="news-cards flex flex-row justify-center flex-wrap w-full my-4 gap-3 max-w-8xl pt-5">
-                <news-card v-for="item in moreItems" :item="item" :key="item.uid" />
-            </div> -->
         </div>
     </div>
 </template>
@@ -24,9 +23,13 @@ import { useRoute } from 'vue-router';
 import { useNewsStore } from '../../../../stores/newsStore';
 import FilterBar from '@/components/politie/FilterBar.vue'
 import NewsCard from '@/components/politie/NewsCard.vue';
+import NewsFullArticle from "@/components/politie/NewsFullArticle.vue";
+import intersectionObserver from '@/components/IntersectionObserver.vue'
 
 const route = useRoute()
 const newsStore = useNewsStore();
+const isLoading = ref(false)
+
 const item = newsStore.newsItems.find((item) => {
     return item.uid === route.params.id
 })
@@ -34,6 +37,19 @@ const moreItems = computed(() => {
     return newsStore.newsItems.filter((item) => {
         return item.uid !== route.params.id
     }).slice(0, 6)
+})
+const onIntersect = async () => {
+    isLoading.value = true
+
+    if (item) {
+        await newsStore.getMoreLocalNews(item.gebied).then(() => {
+            isLoading.value = false;
+        })
+    }
+}
+
+onBeforeUnmount(() => {
+    newsStore.clearLocalNewsItems();
 })
 
 </script>

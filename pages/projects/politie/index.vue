@@ -2,11 +2,11 @@
     <filter-bar />
     <div class="page flex justify-center">
         <div class="container flex flex-col items-center">
-            <!-- <h1 class="text-5xl font-extrabold dark:text-white py-5 text-left">Nieuwsberichten</h1> -->
-            <div class="news-cards flex flex-row justify-center flex-wrap w-full my-4 gap-3 max-w-8xl pt-5">
-                <news-card v-for="item in highlightedNewsItems" :item="item" :key="item.uid" />
+            <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+                <news-card v-for="item in highlightedNewsItems" :item="item" :key="item.uid"
+                    :relative-link="`/projects/politie/posts/${item.uid}`" />
             </div>
-            <div class="news-cards-compact pt-5 container max-w-7xl">
+            <div class="news-cards-compact pt-5 container">
                 <news-card-compact v-for="item in otherNews" :item="item" />
             </div>
             <div class="last pb-10" v-if="newsStore.isLast">{{ getLastMessage() }}</div>
@@ -23,8 +23,8 @@ import NewsCardCompact from '@/components/politie/NewsCardCompact.vue'
 import FilterBar from '@/components/politie/FilterBar.vue';
 
 const newsStore = useNewsStore();
-const highlightedNewsItems = computed(() => newsStore.newsItems.slice(0, 6))
-const otherNews = computed(() => newsStore.newsItems.slice(6, newsStore.newsItems.length))
+const highlightedNewsItems = computed(() => newsStore.newsItems.slice(0, 8))
+const otherNews = computed(() => newsStore.newsItems.slice(8, newsStore.newsItems.length))
 const getLastMessage = () => {
     if (newsStore.newsItems.length === 0 && newsStore.isLast) return "Geen items gevonden"
     if (newsStore.isLast) return "Einde van de lijst"

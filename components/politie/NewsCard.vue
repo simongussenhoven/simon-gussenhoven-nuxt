@@ -10,25 +10,21 @@
                 <img :src="getImage(item.afbeelding.url)" class="float-right pl-10" />
                 {{ getMaxChars(item.introductie) }}
             </p>
-            <NuxtLink :to="`politie/posts/${item.uid}`">
+            <NuxtLink :to="relativeLink">
                 <icon-button class="w-24 mb-0 mt-auto">Lees</icon-button>
             </NuxtLink>
         </div>
     </a>
 </template>
 <script lang="ts" setup>
-import Default from '@/assets/img/default.png'
 import { getDateTime } from '@/utils/date-time-helpers'
 import IconButton from '@/components/IconButton.vue';
+import { getMaxChars } from '@/utils/text-helpers'
+import { getImage } from '@/utils/image-helpers'
 
 const props = defineProps<{
     item: NewsItem
+    relativeLink: string
 }>()
-const getImage = (url: string) => {
-    return url ? url : Default
-}
-const getMaxChars = (string: string) => {
-    return string.length > 200 ? `${string.substring(0, 200)}...` : string
-}
 
 </script>
